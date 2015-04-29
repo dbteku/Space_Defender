@@ -73,7 +73,7 @@ void myDraw(Core::Graphics& graphics)
 
 void main()
 {
-	Core::Init("My Game", 800, 800);
+	Core::Init("My Game", 1000, 750);
 	Core::RegisterUpdateFn(myUpdate);
 	Core::RegisterDrawFn(myDraw);
 	Core::GameLoop();
