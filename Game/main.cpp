@@ -18,6 +18,7 @@ void drawLine(Core::Graphics& g, const Point& left, const Point& right)
 	g.DrawLine(left.x, left.y, right.x, right.y);
 }
 
+
 struct Ship
 {
 	Point Left;
@@ -94,7 +95,7 @@ void myDraw(Core::Graphics& graphics)
 
 void main()
 {
-	Core::Init("My Game", 1000, 750);
+	Core::Init("Space Defender", 1000, 750);
 	Core::RegisterUpdateFn(myUpdate);
 	Core::RegisterDrawFn(myDraw);
 	Core::GameLoop();
