@@ -35,14 +35,14 @@ struct Ship
 	Point meBase;
 	Point velocity;
 	Ship() :
-		Left(-50, 50),
-		bottomRight(0, -50),
-		Right(50, 50),
-		bottomLeft(5,10),
+		Left(-40, 40),
+		bottomRight(0, -40),
+		Right(40, 40),
+		bottomLeft(-5,0),
 		Center(0,0),
-		Gun1(0,-60),
+		Gun1(0,-50),
 		
-		gPoint1(0,-45),
+		gPoint1(0,-35),
 		
 		meBase(400, 400)
 	{}
