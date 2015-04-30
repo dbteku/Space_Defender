@@ -20,23 +20,44 @@ void drawLine(Core::Graphics& g, const Point& left, const Point& right)
 
 struct Ship
 {
-	Point lowerLeft;
-	Point top;
-	Point lowerRight;
+	Point Left;
+	Point bottomLeft;
+	Point Right;
+	Point bottomRight;
+	Point Center;
+	Point Gun1;
+	Point Gun2;
+	Point gPoint1;
+	Point gPoint2;
+	
 
 	Point meBase;
 	Point velocity;
 	Ship() :
-		lowerLeft(-50, 50),
-		top(0, -50),
-		lowerRight(50, 50),
+		Left(-50, 50),
+		bottomRight(0, -50),
+		Right(50, 50),
+		bottomLeft(5,10),
+		Center(0,0),
+		Gun1(0,-60),
+		
+		gPoint1(0,-45),
+		
 		meBase(400, 400)
 	{}
 	void drawThyself(Core::Graphics& g)
 	{
-		drawLine(g, meBase + lowerLeft, meBase + top);
-		drawLine(g, meBase + top, meBase + lowerRight);
-		drawLine(g, meBase + lowerRight, meBase + lowerLeft);
+		drawLine(g, meBase + Left, meBase + bottomRight);
+		drawLine(g, meBase + bottomRight, meBase + Right);
+	 
+		//drawLine(g, meBase + bottomLeft, meBase + Left);
+		drawLine(g, meBase + Left, meBase + Center);
+		drawLine(g, meBase + Right, meBase + Center);
+		drawLine(g, meBase + Right, meBase + Center);
+		drawLine(g, meBase + gPoint1, meBase + Gun1);
+		
+
+
 	}
 	void integrate()
 	{
