@@ -31,4 +31,5 @@ void main()
 	Core::RegisterUpdateFn(myUpdate);
 	Core::RegisterDrawFn(myDraw);
 	Core::GameLoop();
+	
 }

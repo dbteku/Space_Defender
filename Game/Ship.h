@@ -40,6 +40,7 @@ struct Ship
 		drawLine(g, meBase + gPoint1, meBase + Gun1);
 
 	}
+	
 	void integrate()
 	{
 		meBase = meBase + velocity;

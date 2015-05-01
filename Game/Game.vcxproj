@@ -91,6 +91,7 @@
   <ItemGroup>
     <ClInclude Include="Point.h" />
     <ClInclude Include="Ship.h" />
+    <ClInclude Include="SmallShip.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
