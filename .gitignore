@@ -72,6 +72,8 @@ build/
 *.log
 *.vcproj
 *.vcproj.filters
+*.vcxproj
+*.vcxproj.filters
 *.vspscc
 *.vssscc
 .builds
