@@ -4,6 +4,10 @@
 #define SHIP_H
 struct Ship
 {
+private:
+	float defaultAcceleration = 1;
+	float maxLeftAcceleration = -10;
+	float maxRightAcceleration = 10;
 	Point Left;
 	Point bottomLeft;
 	Point Right;
@@ -15,10 +19,10 @@ struct Ship
 	Point gPoint2;
 	float spawnX = 500;
 	float spawnY = 700;
-
-
 	Point meBase;
 	Point velocity;
+
+public:
 	Ship() :
 		Left(-40, 40),
 		bottomRight(0, -40),
@@ -40,10 +44,40 @@ struct Ship
 		drawLine(g, meBase + gPoint1, meBase + Gun1);
 
 	}
+
 	void integrate()
 	{
 		meBase = meBase + velocity;
 	}
+
+	void stop(){
+		velocity.x = 0;
+	}
+
+	Point getPos(){
+		return meBase;
+	}
+
+	Point getLeftPos(){
+		return meBase + Left;
+	}
+
+	Point getRightPos(){
+		return meBase + Right;
+	}
+
+	void goRight(){
+		if (velocity.x < maxRightAcceleration){
+			velocity.x += defaultAcceleration;
+		}
+	}
+
+	void goLeft(){
+		if (velocity.x > maxLeftAcceleration){
+			velocity.x -= defaultAcceleration;
+		}
+	}
+
 };
 
 #endif SHIP_H

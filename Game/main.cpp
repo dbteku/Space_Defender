@@ -1,17 +1,60 @@
 #include "Ship.h"
+#include <iostream>
 
+using std::cout;
+using std::endl;
+
+int width = 1000;
+int height = 750;
 Ship ship;
 
-void checkKeyInput()
-{
-	float acceleration = 1;
-	if (Core::Input::IsPressed(Core::Input::KEY_RIGHT)){
-		ship.velocity.x += acceleration;
+bool isAtEdge(Point p){
+	bool b = false;
+	if (p.x >= width){
+		b = p.x >= width;
 	}
+	else if (p.x <= width - width){
+		b = p.x <= width - width;
+	}
+
+	return b;
+
+}
+
+void checkKeyInput(){
+
+	if (isAtEdge(ship.getPos())){
+		ship.stop();
+	}
+	if (Core::Input::IsPressed(Core::Input::KEY_RIGHT)){
+		if (!isAtEdge(ship.getRightPos())){
+			if (ship.getRightPos().x <= width){
+				ship.goRight();
+			}
+		}else{
+			if (ship.getRightPos().x <= width){
+				ship.goRight();
+			}
+			else{
+				ship.stop();
+			}
+		}
+}
 	if (Core::Input::IsPressed(Core::Input::KEY_LEFT)){
-		ship.velocity.x -= acceleration;
+		if (!isAtEdge(ship.getLeftPos())){
+			if (ship.getLeftPos().x >= width - width){
+				ship.goLeft();
+			}
+		}else{
+			if (ship.getLeftPos().x >= width - width){
+				ship.goLeft();
+			}else{
+				ship.stop();
+			}
+		}
 	}
 }
+
 
 bool myUpdate(float dt)
 {
@@ -27,7 +70,7 @@ void myDraw(Core::Graphics& graphics)
 
 void main()
 {
-	Core::Init("Space Defender", 1000, 750);
+	Core::Init("Space Defender", width, height);
 	Core::RegisterUpdateFn(myUpdate);
 	Core::RegisterDrawFn(myDraw);
 	Core::GameLoop();

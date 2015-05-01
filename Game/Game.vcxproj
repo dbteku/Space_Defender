@@ -89,6 +89,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Ship.h" />
   </ItemGroup>
