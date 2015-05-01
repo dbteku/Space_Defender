@@ -70,6 +70,8 @@ build/
 *.tmp
 *.tmp_proj
 *.log
+*.vcproj
+*.vcproj.filters
 *.vspscc
 *.vssscc
 .builds
