@@ -17,9 +17,7 @@ bool isAtEdge(Point p){
 	else if (p.x <= width - width){
 		b = p.x <= width - width;
 	}
-
 	return b;
-
 }
 
 void checkKeyInput(){
