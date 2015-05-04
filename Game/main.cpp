@@ -1,5 +1,6 @@
 #include "Ship.h"
 #include <iostream>
+#include "SmallShip.h"
 
 using std::cout;
 using std::endl;
@@ -8,6 +9,7 @@ int width = 1000;
 int height = 750;
 
 Ship ship;
+SmallShip s;
 
 bool isAtEdge(Point p){
 	bool b = false;
@@ -62,12 +64,14 @@ bool myUpdate(float dt)
 {
 	checkKeyInput();
 	ship.integrate();
+	s.integrate();
 	return false;
 }
 
 void myDraw(Core::Graphics& graphics)
 {
 	ship.drawThyself(graphics);
+	s.drawThyself(graphics);
 }
 
 void main()
