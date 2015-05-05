@@ -25,5 +25,11 @@
     <ClInclude Include="SmallShip.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

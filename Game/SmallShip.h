@@ -2,8 +2,9 @@
 
 #ifndef SM_SHIP
 #define SM_SHIP
-struct SmallShip{
+class SmallShip{
 
+private:
 	float defaultAcceleration = 1;
 	float maxLeftAcceleration = -10;
 	float maxRightAcceleration = 10;
@@ -16,7 +17,10 @@ struct SmallShip{
 	float spawnY = 25;
 	Point meBase;
 	Point velocity;
+	bool isDead = false;
+	bool isMoving = true;
 	
+public:
 	SmallShip() :
 		
 		Left(-20, 20),
@@ -36,6 +40,23 @@ struct SmallShip{
 		drawLine(g, meBase + Right, meBase + Center);
 		drawLine(g, meBase + Right, meBase + Center);
 
+	}
+
+	void move(){
+		velocity.y = 3;
+	}
+
+	void act(){
+		if (isMoving){
+			move();
+		}
+		else{
+			stop();
+		}
+	}
+
+	void stop(){
+		velocity.y = 0;
 	}
 
 	void integrate()

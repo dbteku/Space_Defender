@@ -2,7 +2,7 @@
 
 #ifndef SHIP_H
 #define SHIP_H
-struct Ship
+class Ship
 {
 
 private:
@@ -68,6 +68,10 @@ public:
 		if (velocity.x < maxRightAcceleration){
 			velocity.x += defaultAcceleration;
 		}
+	}
+
+	void act(){
+
 	}
 
 	void stop(){

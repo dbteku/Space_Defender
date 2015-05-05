@@ -9,7 +9,7 @@ int width = 1000;
 int height = 750;
 
 Ship ship;
-SmallShip s;
+SmallShip enemy;
 
 bool isAtEdge(Point p){
 	bool b = false;
@@ -60,22 +60,20 @@ void checkKeyInput(){
 }
 
 
-bool myUpdate(float dt)
-{
+bool myUpdate(float dt){
 	checkKeyInput();
 	ship.integrate();
-	s.integrate();
+	enemy.integrate();
+	enemy.act();
 	return false;
 }
 
-void myDraw(Core::Graphics& graphics)
-{
+void myDraw(Core::Graphics& graphics){
 	ship.drawThyself(graphics);
-	s.drawThyself(graphics);
+	enemy.drawThyself(graphics);
 }
 
-void main()
-{
+void main(){
 	Core::Init("Space Defender", width, height);
 	Core::RegisterUpdateFn(myUpdate);
 	Core::RegisterDrawFn(myDraw);
