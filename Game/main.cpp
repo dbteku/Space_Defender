@@ -1,7 +1,9 @@
 #include "Ship.h"
 #include <iostream>
 #include "SmallShip.h"
+#include "EnemyManager.h"
 
+using std::vector;
 using std::cout;
 using std::endl;
 
@@ -66,6 +68,10 @@ bool myUpdate(float dt){
 	enemy.integrate();
 	enemy.act();
 	return false;
+}
+
+void checkOutOfBounds(vector<SmallShip>& ships){
+
 }
 
 void myDraw(Core::Graphics& graphics){

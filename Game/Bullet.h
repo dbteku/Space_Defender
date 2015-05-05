@@ -1,5 +1,5 @@
 #include "Point.h"
 
-struct bullet{
+class bullet{
 
 };
