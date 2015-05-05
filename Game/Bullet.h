@@ -1,62 +1,49 @@
 #include "Point.h"
 
-
 #ifndef BULLET_H
 #define BULLET_H
-
 class Bullet{
 
-
 private:
-	Point top;
 	Point bottom;
-	Point base;
-	float spawn_X = 500;
-	float spawn_y =700;
+	Point top;
+	float spawnX = 500;
+	float spawnY = 55;
+	Point meBase;
 	Point velocity;
-	bool noContact = true;
-
 
 public:
+	Bullet():
 
-	Bullet() :
-		top(450, 70),
-		bottom(450, 50),
+		bottom(0,0),
+		top(0,-15),
 
-		base( spawn_X, spawn_y)
+		meBase(spawnX, spawnY)
 	{}
 
-
-	void integrate()
-	{
-		base = base + velocity;
-	}
-
 	void drawThyself(Core::Graphics& g){
-		drawLine(g, base + top, base + bottom);
+		drawLine(g, meBase + top, meBase + bottom);
 	}
 
 	void move(){
 		velocity.y = 3;
 	}
 
+	void act(){
+
+	}
 
 	void stop(){
 		velocity.y = 0;
 	}
 
-
-	void act(){
-		if (noContact){
-			move();
-		}
-		else{
-			stop();
-
-		}
-
+	void integrate(){
+		meBase = meBase + velocity;
 	}
 
+	Point getPos(){
+		return meBase;
+	}
 
 };
 #endif BULLET_H

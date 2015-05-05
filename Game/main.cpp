@@ -85,7 +85,7 @@ void myDraw(Core::Graphics& graphics){
 }
 
 void main(){
-	manager.add(enemy);
+	//manager.add(enemy);
 	Core::Init("Space Defender", width, height);
 	Core::RegisterUpdateFn(myUpdate);
 	Core::RegisterDrawFn(myDraw);
