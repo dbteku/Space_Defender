@@ -12,6 +12,7 @@ int height = 750;
 
 Ship ship;
 SmallShip enemy;
+EnemyManager manager;
 
 bool isAtEdge(Point p){
 	bool b = false;
@@ -66,7 +67,8 @@ bool myUpdate(float dt){
 	checkKeyInput();
 	ship.integrate();
 	enemy.integrate();
-	enemy.act();
+	//checkOutOfBounds(manager.getShips());
+	manager.update();
 	return false;
 }
 
@@ -76,12 +78,17 @@ void checkOutOfBounds(vector<SmallShip>& ships){
 
 void myDraw(Core::Graphics& graphics){
 	ship.drawThyself(graphics);
-	enemy.drawThyself(graphics);
+	vector<SmallShip>& ships = manager.getShips();
+
+	for (int x = 0; x < ships.size(); x++){
+		ships[x].drawThyself(graphics);
+	}
 }
 
 void main(){
 	Core::Init("Space Defender", width, height);
 	Core::RegisterUpdateFn(myUpdate);
 	Core::RegisterDrawFn(myDraw);
+	manager.add(enemy);
 	Core::GameLoop();
 }
