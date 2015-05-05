@@ -2,6 +2,7 @@
 #include <iostream>
 #include "SmallShip.h"
 #include "EnemyManager.h"
+#include "Bullet.h"
 
 using std::vector;
 using std::cout;
@@ -12,6 +13,7 @@ int height = 750;
 
 Ship ship;
 SmallShip enemy;
+bullet Bullet;
 
 bool isAtEdge(Point p){
 	bool b = false;
@@ -59,6 +61,9 @@ void checkKeyInput(){
 			}
 		}
 	}
+	if (Core::Input::IsPressed(Core::Input::KEY_DOWN)){
+		Bullet.move();
+	}
 }
 
 
@@ -67,6 +72,7 @@ bool myUpdate(float dt){
 	ship.integrate();
 	enemy.integrate();
 	enemy.act();
+	Bullet.move();
 	return false;
 }
 
@@ -77,6 +83,8 @@ void checkOutOfBounds(vector<SmallShip>& ships){
 void myDraw(Core::Graphics& graphics){
 	ship.drawThyself(graphics);
 	enemy.drawThyself(graphics);
+	Bullet.drawThyself(graphics);
+	
 }
 
 void main(){
