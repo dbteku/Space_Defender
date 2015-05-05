@@ -2,10 +2,9 @@
 
 
 #ifndef BULLET_H
+#define BULLET_H
 
-
-
-class bullet{
+class Bullet{
 
 
 private:
@@ -15,13 +14,12 @@ private:
 	float spawn_X = 500;
 	float spawn_y =700;
 	Point velocity;
-	bool hitContact;
-	bool noContact;
+	bool noContact = true;
 
 
 public:
 
-	bullet() :
+	Bullet() :
 		top(450, 70),
 		bottom(450, 50),
 
@@ -29,13 +27,17 @@ public:
 	{}
 
 
+	void integrate()
+	{
+		base = base + velocity;
+	}
 
 	void drawThyself(Core::Graphics& g){
 		drawLine(g, base + top, base + bottom);
 	}
 
 	void move(){
-		velocity.y = -7;
+		velocity.y = 3;
 	}
 
 

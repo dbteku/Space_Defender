@@ -13,7 +13,8 @@ int height = 750;
 
 Ship ship;
 SmallShip enemy;
-bullet Bullet;
+Bullet bullet;
+EnemyManager manager;
 
 bool isAtEdge(Point p){
 	bool b = false;
@@ -61,33 +62,30 @@ void checkKeyInput(){
 			}
 		}
 	}
-	if (Core::Input::IsPressed(Core::Input::KEY_DOWN)){
-		Bullet.move();
-	}
 }
 
+void update(){
+	manager.update();
+}
 
 bool myUpdate(float dt){
 	checkKeyInput();
 	ship.integrate();
-	enemy.integrate();
-	enemy.act();
-	Bullet.move();
+	update();
 	return false;
-}
-
-void checkOutOfBounds(vector<SmallShip>& ships){
-
 }
 
 void myDraw(Core::Graphics& graphics){
 	ship.drawThyself(graphics);
-	enemy.drawThyself(graphics);
-	Bullet.drawThyself(graphics);
+	vector<SmallShip>& ships = manager.getShips();
+	for (int x = 0; x < ships.size(); x++){
+		ships[x].drawThyself(graphics);
+	}
 	
 }
 
 void main(){
+	manager.add(enemy);
 	Core::Init("Space Defender", width, height);
 	Core::RegisterUpdateFn(myUpdate);
 	Core::RegisterDrawFn(myDraw);

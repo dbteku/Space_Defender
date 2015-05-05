@@ -32,8 +32,7 @@ public:
 		meBase(spawnX, spawnY)
 	{}
 
-	void drawThyself(Core::Graphics& g)
-	{
+	void drawThyself(Core::Graphics& g){
 		drawLine(g, meBase + Left, meBase + topPeak);
 		drawLine(g, meBase + topPeak, meBase + Right);
 		drawLine(g, meBase + Left, meBase + Center);
