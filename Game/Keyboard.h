@@ -40,6 +40,10 @@ void checkKeyInput(Ship& ship, int& width, int& height){
 	else{
 		ship.slow();
 	}
+
+	if (Core::Input::IsPressed(Core::Input::BUTTON_SPACE)){
+		ship.fire();
+	}
 }
 
 #endif KEYBOARD

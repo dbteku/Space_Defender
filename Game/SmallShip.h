@@ -39,7 +39,7 @@ public:
 	}
 
 	void move(){
-		velocity.y = 3;
+		velocity.y = 4;
 	}
 
 	void act(){

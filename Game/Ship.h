@@ -87,6 +87,10 @@ public:
 		}
 	}
 
+	void fire(){
+
+	}
+
 	void integrate()
 	{
 		meBase = meBase + velocity;
