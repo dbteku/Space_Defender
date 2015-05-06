@@ -91,6 +91,7 @@
   <ItemGroup>
     <ClInclude Include="Boundary.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Dependencies.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Math.h" />

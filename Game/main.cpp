@@ -1,14 +1,4 @@
-#include "Ship.h"
-#include <iostream>
-#include "SmallShip.h"
-#include "EnemyManager.h"
-#include "Bullet.h"
-#include "Keyboard.h"
-
-using std::vector;
-using std::cout;
-using std::endl;
-
+#include "Dependencies.h"
 int width = 1000;
 int height = 750;
 
