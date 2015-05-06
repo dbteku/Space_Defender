@@ -14,6 +14,7 @@ private:
 	vector<SmallShip> ships;
 	short maxShips = 5;
 	Counter counter;
+	int padding = 30;
 public:
 
 	vector<SmallShip>& getShips(){
@@ -43,6 +44,10 @@ public:
 		return counter.canSpawn();
 	}
 
+	int getPadding(){
+		return padding;
+	}
+
 };
 
 
@@ -54,7 +59,7 @@ void updateShips(EnemyManager& manager, int& width, int& height){
 		difference = manager.getMaxShips() - ships.size();
 			if (canSpawn){
 				if (difference > 0){
-					SmallShip s;
+					SmallShip s(width, manager.getPadding());
 					manager.add(s);
 				}
 		}

@@ -13,7 +13,6 @@ int width = 1000;
 int height = 750;
 
 Ship ship;
-SmallShip enemy;
 Bullet bullet;
 EnemyManager manager;
 

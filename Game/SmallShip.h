@@ -6,13 +6,12 @@
 class SmallShip{
 
 private:
-	short id = random(100);
+	short id = random(100, 0);
 	Point Left;
 	Point bottomLeft;
 	Point Right;
 	Point topPeak;
 	Point Center;
-	float spawnX = random(1000);
 	float spawnY = 25;
 	Point meBase;
 	Point velocity;
@@ -20,7 +19,7 @@ private:
 	bool isMoving = true;
 	
 public:
-	SmallShip() :
+	SmallShip(int& width, int padding) :
 		
 		Left(-20, 20),
 		topPeak(0, 60),
@@ -28,7 +27,7 @@ public:
 		bottomLeft(-15, 0),
 		Center(0, 0),
 
-		meBase(spawnX, spawnY)
+		meBase(random(width, padding), spawnY)
 	{}
 
 	void drawThyself(Core::Graphics& g){
