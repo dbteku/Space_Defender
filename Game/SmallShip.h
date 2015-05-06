@@ -6,7 +6,6 @@
 class SmallShip{
 
 private:
-	short id = random(100, 0);
 	Point Left;
 	Point bottomLeft;
 	Point Right;
@@ -63,10 +62,6 @@ public:
 
 	Point getPos(){
 		return meBase;
-	}
-
-	short getId(){
-		return id;
 	}
 
 };
