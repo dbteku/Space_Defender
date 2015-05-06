@@ -62,6 +62,9 @@ void checkKeyInput(){
 			}
 		}
 	}
+	if (Core::Input::IsPressed(Core::Input::BUTTON_SPACE)){
+		bullet.move();
+	}
 }
 
 void update(){
@@ -72,6 +75,7 @@ bool myUpdate(float dt){
 	checkKeyInput();
 	ship.integrate();
 	update();
+	bullet.integrate();
 	return false;
 }
 
@@ -81,6 +85,7 @@ void myDraw(Core::Graphics& graphics){
 	for (int x = 0; x < ships.size(); x++){
 		ships[x].drawThyself(graphics);
 	}
+	bullet.drawThyself(graphics);
 	
 }
 
