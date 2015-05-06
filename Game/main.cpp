@@ -3,6 +3,7 @@
 #include "SmallShip.h"
 #include "EnemyManager.h"
 #include "Bullet.h"
+#include "Keyboard.h"
 
 using std::vector;
 using std::cout;
@@ -16,66 +17,17 @@ SmallShip enemy;
 Bullet bullet;
 EnemyManager manager;
 
-bool isAtEdge(Point p){
-	bool b = false;
-	if (p.x >= width){
-		b = p.x >= width;
-	}
-	else if (p.x <= width - width){
-		b = p.x <= width - width;
-	}
-	return b;
-}
-
-void checkKeyInput(){
-
-	if (isAtEdge(ship.getPos())){
-		ship.stop();
-	}
-	if (Core::Input::IsPressed(Core::Input::KEY_RIGHT)){
-		if (!isAtEdge(ship.getRightPos())){
-			if (ship.getRightPos().x <= width){
-				ship.goRight();
-			}
-		}
-		else{
-			if (ship.getRightPos().x <= width){
-				ship.goRight();
-			}
-			else{
-				ship.stop();
-			}
-		}
-	}
-	if (Core::Input::IsPressed(Core::Input::KEY_LEFT)){
-		if (!isAtEdge(ship.getLeftPos())){
-			if (ship.getLeftPos().x >= width - width){
-				ship.goLeft();
-			}
-		}
-		else{
-			if (ship.getLeftPos().x >= width - width){
-				ship.goLeft();
-			}
-			else{
-				ship.stop();
-			}
-		}
-	}
-	if (Core::Input::IsPressed(Core::Input::BUTTON_SPACE)){
-		bullet.move();
-	}
-}
 
 void update(){
 	manager.update();
 }
 
 bool myUpdate(float dt){
-	checkKeyInput();
+	checkKeyInput(ship, width, height);
 	ship.integrate();
 	update();
-	bullet.integrate();
+	updateShips(manager,width,height);
+	isOutOfBounds(manager, width, height);
 	return false;
 }
 
@@ -85,12 +37,10 @@ void myDraw(Core::Graphics& graphics){
 	for (int x = 0; x < ships.size(); x++){
 		ships[x].drawThyself(graphics);
 	}
-	bullet.drawThyself(graphics);
-	
 }
 
 void main(){
-	//manager.add(enemy);
+	mathInit();
 	Core::Init("Space Defender", width, height);
 	Core::RegisterUpdateFn(myUpdate);
 	Core::RegisterDrawFn(myDraw);

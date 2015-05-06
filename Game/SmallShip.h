@@ -1,19 +1,18 @@
 #include "Point.h"
+#include "Math.h"
 
 #ifndef SM_SHIP
 #define SM_SHIP
 class SmallShip{
 
 private:
-	float defaultAcceleration = 1;
-	float maxLeftAcceleration = -10;
-	float maxRightAcceleration = 10;
+	short id = random(100);
 	Point Left;
 	Point bottomLeft;
 	Point Right;
 	Point topPeak;
 	Point Center;
-	float spawnX = 500;
+	float spawnX = random(1000);
 	float spawnY = 25;
 	Point meBase;
 	Point velocity;
@@ -65,6 +64,10 @@ public:
 
 	Point getPos(){
 		return meBase;
+	}
+
+	short getId(){
+		return id;
 	}
 
 };

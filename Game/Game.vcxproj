@@ -89,11 +89,15 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boundary.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="Keyboard.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="SmallShip.h" />
+    <ClInclude Include="Counter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -78,6 +78,15 @@ public:
 		velocity.x = 0;
 	}
 
+	void slow(){
+		if (velocity.x > 0){
+			velocity.x--;
+		}
+		else if (velocity.x < 0){
+			velocity.x++;
+		}
+	}
+
 	void integrate()
 	{
 		meBase = meBase + velocity;
