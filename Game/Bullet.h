@@ -23,7 +23,9 @@ public:
 	{}
 
 	void drawThyself(Graphics& g){
+		g.SetColor(RGB(255,0,0));
 		drawLine(g, meBase + top, meBase + bottom);
+		g.SetColor(RGB(255,255,255));
 	}
 
 	void move(){

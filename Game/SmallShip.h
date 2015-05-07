@@ -31,11 +31,13 @@ public:
 	{}
 
 	void drawThyself(Graphics& g){
+		g.SetColor(RGB(0, 255, 0));
 		drawLine(g, meBase + Left, meBase + topPeak);
 		drawLine(g, meBase + topPeak, meBase + Right);
 		drawLine(g, meBase + Left, meBase + Center);
 		drawLine(g, meBase + Right, meBase + Center);
 		drawLine(g, meBase + Right, meBase + Center);
+		g.SetColor(RGB(255, 255, 255));
 
 	}
 
