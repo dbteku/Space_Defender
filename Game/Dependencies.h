@@ -6,5 +6,6 @@
 #include "Manager.h"
 #include "Bullet.h"
 #include "Keyboard.h"
+#include "Explosion.h"
 using std::vector;
 #endif DEPEN

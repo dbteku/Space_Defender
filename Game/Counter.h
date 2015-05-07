@@ -3,6 +3,7 @@
 class Counter{
 private:
 	int counter = 20;
+	int exploCounter = 30;
 public:
 
 	bool isReady(){
@@ -12,5 +13,12 @@ public:
 		}
 		return counter == 0;
 	}
+	bool explosionDelay(){
+		exploCounter--;
+		if (exploCounter < -1){
+			exploCounter = 30;
+		}
+		return exploCounter == 0;
+	}
 };
-#endif COUNT
+#endif COUNT;
