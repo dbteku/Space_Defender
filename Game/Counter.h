@@ -6,7 +6,7 @@ private:
 	int exploCounter = 30;
 public:
 
-	bool canSpawn(){
+	bool isReady(){
 		counter--;
 		if (counter < -1){
 			counter = 100;
