@@ -134,8 +134,8 @@ void checkBulletCollision(vector<Bullet>& bullets, vector<SmallShip>& ships){
 			if (isHitting(bulletClone[i], clone[x])){
 				clone[x].destroy();
 				bulletClone[i].destroy();
-				bullets.erase(bullets.begin() + i);
 				ships.erase(ships.begin() + x);
+				bullets.erase(bullets.begin() + 0);
 			}
 		}
 
