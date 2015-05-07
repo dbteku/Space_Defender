@@ -5,7 +5,7 @@ private:
 	int counter = 20;
 public:
 
-	bool canSpawn(){
+	bool isReady(){
 		counter--;
 		if (counter < -1){
 			counter = 100;

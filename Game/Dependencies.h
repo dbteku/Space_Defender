@@ -3,7 +3,7 @@
 #include "Ship.h"
 #include <iostream>
 #include "SmallShip.h"
-#include "EnemyManager.h"
+#include "Manager.h"
 #include "Bullet.h"
 #include "Keyboard.h"
 using std::vector;

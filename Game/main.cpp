@@ -3,8 +3,7 @@ int width = 1000;
 int height = 750;
 
 Ship ship;
-Bullet bullet;
-EnemyManager manager;
+Manager manager;
 
 
 void update(){
@@ -12,19 +11,25 @@ void update(){
 }
 
 bool myUpdate(float dt){
-	checkKeyInput(ship, width, height);
-	ship.integrate();
-	update();
-	updateShips(manager,width,height);
-	isOutOfBounds(manager, width, height);
+	if (!ship.isDead()){
+		ship.integrate();
+		update();
+		update(manager, width, height);
+	}
 	return false;
 }
 
 void myDraw(Core::Graphics& graphics){
-	ship.drawThyself(graphics);
-	vector<SmallShip>& ships = manager.getShips();
-	for (int x = 0; x < ships.size(); x++){
-		ships[x].drawThyself(graphics);
+	if (!ship.isDead()){
+		checkKeyInput(ship, width, height, graphics);
+		checkPlayerCollision(ship, manager.getShips());
+		checkBulletCollision(ship.getBullets(), manager.getShips());
+		ship.drawThyself(graphics);
+		vector<SmallShip>& ships = manager.getShips();
+		ship.act(width, height, graphics);
+		for (int x = 0; x < ships.size(); x++){
+			ships[x].act(graphics);
+		}
 	}
 }
 

@@ -2,7 +2,10 @@
 #define KEYBOARD
 #include "Ship.h"
 #include "Boundary.h"
-void checkKeyInput(Ship& ship, int& width, int& height){
+
+bool isSpacePressed = false;
+
+void checkKeyInput(Ship& ship, int& width, int& height, Core::Graphics& g){
 
 	if (isAtEdge(ship.getPos(), width, height)){
 		ship.stop();
@@ -42,7 +45,13 @@ void checkKeyInput(Ship& ship, int& width, int& height){
 	}
 
 	if (Core::Input::IsPressed(Core::Input::BUTTON_SPACE)){
-		ship.fire();
+		if (!isSpacePressed){
+			ship.fire(g);
+			isSpacePressed = true;
+		}
+	}
+	else{
+		isSpacePressed = false;
 	}
 }
 

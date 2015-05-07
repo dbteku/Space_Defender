@@ -15,7 +15,6 @@ private:
 	Point meBase;
 	Point velocity;
 	bool isDead = false;
-	bool isMoving = true;
 	
 public:
 	SmallShip(int& width, int padding) :
@@ -42,13 +41,30 @@ public:
 		velocity.y = 4;
 	}
 
-	void act(){
-		if (isMoving){
+	void act(Core::Graphics& g){
+		if (!isDead){
+			drawThyself(g);
 			move();
 		}
 		else{
 			stop();
 		}
+	}
+
+	Point getTop(){
+		return meBase + topPeak;
+	}
+
+	Point getBottom(){
+		return meBase + Left;
+	}
+
+	Point getLeft(){
+		return meBase + Left;
+	}
+
+	Point getRight(){
+		return meBase + Right;
 	}
 
 	void stop(){
@@ -58,6 +74,10 @@ public:
 	void integrate()
 	{
 		meBase = meBase + velocity;
+	}
+
+	void destroy(){
+		isDead = true;
 	}
 
 	Point getPos(){

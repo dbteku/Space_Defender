@@ -7,13 +7,12 @@ class Bullet{
 private:
 	Point bottom;
 	Point top;
-	float spawnX = 500;
-	float spawnY = 55;
 	Point meBase;
 	Point velocity;
+	bool isAlive = true;
 
 public:
-	Bullet():
+	Bullet(int spawnX, int spawnY):
 
 		bottom(0,0),
 		top(0,-15),
@@ -26,11 +25,18 @@ public:
 	}
 
 	void move(){
-		velocity.y = 3;
+		velocity.y = -5;
 	}
 
-	void act(){
-
+	void act(Core::Graphics& g){
+		if (isAlive){
+			move();
+			integrate();
+			drawThyself(g);
+		}
+		else{
+			stop();
+		}
 	}
 
 	void stop(){
@@ -39,6 +45,10 @@ public:
 
 	void integrate(){
 		meBase = meBase + velocity;
+	}
+
+	void destroy(){
+		isAlive = false;
 	}
 
 	Point getPos(){
