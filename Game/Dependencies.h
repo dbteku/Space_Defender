@@ -7,5 +7,6 @@
 #include "Bullet.h"
 #include "Keyboard.h"
 #include "Explosion.h"
+#include <string>
 using std::vector;
 #endif DEPEN
