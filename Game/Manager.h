@@ -129,17 +129,20 @@ void checkPlayerCollision(Ship& ship, vector<SmallShip>& ships){
 void checkBulletCollision(vector<Bullet>& bullets, vector<SmallShip>& ships){
 	vector<SmallShip>& clone = ships;
 	vector<Bullet>& bulletClone = bullets;
+	vector<int> bulletContainer;
 	for (int x = 0; x < clone.size(); x++){
 		for (int i = 0; i < bulletClone.size(); i++){
 			if (isHitting(bulletClone[i], clone[x])){
 				clone[x].destroy();
 				bulletClone[i].destroy();
 				ships.erase(ships.begin() + x);
-				bullets.erase(bullets.begin() + 0);
+				bullets.erase(bullets.begin() + i);
+				break;
+				// DONT EVER DO THIS. Just a fix that I dont like. Not sure how to fix it otherwise.
 			}
 		}
-
 	}
+
 }
 
 #endif MANAGER

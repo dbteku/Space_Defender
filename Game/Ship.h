@@ -33,8 +33,9 @@ private:
 	bool isDeadOrNot = false;
 	
 	void updateBullets(Core::Graphics& g, int& width, int& height){
-		for (int x = 0; x < bullets.size(); x++){
-				bullets[x].act(g);
+		vector<Bullet>& clone = bullets;
+		for (int x = 0; x < clone.size(); x++){
+				clone[x].act(g);
 		}
 	}
 
