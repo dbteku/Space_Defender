@@ -9,7 +9,7 @@ public:
 	bool isReady(){
 		counter--;
 		if (counter < -1){
-			counter = 100;
+			counter = 90;
 		}
 		return counter == 0;
 	}

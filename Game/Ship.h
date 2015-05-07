@@ -1,11 +1,11 @@
+#ifndef SHIP_H
+#define SHIP_H
 #include "Point.h"
 #include <vector>
 #include "Bullet.h"
 #include "Boundary.h"
-
-#ifndef SHIP_H
-#define SHIP_H
-
+#include"Core.h"
+using Core::Graphics;
 using std::vector;
 class Ship
 {
@@ -32,7 +32,7 @@ private:
 	int lives = 3;
 	bool isDeadOrNot = false;
 	
-	void updateBullets(Core::Graphics& g, int& width, int& height){
+	void updateBullets(Graphics& g, int& width, int& height){
 		vector<Bullet>& clone = bullets;
 		for (int x = 0; x < clone.size(); x++){
 				clone[x].act(g);
@@ -60,7 +60,7 @@ public:
 
 		meBase(spawnX, spawnY)
 	{}
-	void drawThyself(Core::Graphics& g)
+	void drawThyself(Graphics& g)
 	{
 		drawLine(g, meBase + Left, meBase + bottomRight);
 		drawLine(g, meBase + bottomRight, meBase + Right);
@@ -95,7 +95,7 @@ public:
 		}
 	}
 
-	void act(int& width, int& height, Core::Graphics& g){
+	void act(int& width, int& height, Graphics& g){
 		updateBullets(g, width, height);
 		isOutOfBounds(width, height);
 
@@ -114,7 +114,7 @@ public:
 		}
 	}
 
-	void fire(Core::Graphics& g){
+	void fire(Graphics& g){
 		float x = meBase.x;
 		float y = meBase.y + gPoint1.y;
 		integrate();
@@ -143,8 +143,7 @@ public:
 		return meBase + Right;
 	}
 
-	void integrate()
-	{
+	void integrate(){
 		meBase = meBase + velocity;
 	}
 
@@ -162,6 +161,10 @@ public:
 
 	vector<Bullet>& getBullets(){
 		return bullets;
+	}
+
+	int getLives(){
+		return lives;
 	}
 };
 

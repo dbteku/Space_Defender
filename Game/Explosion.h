@@ -1,8 +1,7 @@
-#include "Point.h"
-#include "Counter.h"
-
 #ifndef EXPLOSION_H
 #define EXPLOSION_H
+#include "Point.h"
+#include "Counter.h"
 class  largeExplosion{
 
 
@@ -113,7 +112,6 @@ class Explosion{
 	Counter count;
 	Counter count1;
 	Counter count2;
-	
 
 private:
 	int runCount = 100;
@@ -163,15 +161,16 @@ public:
 	}
 
 	void explosionAct(Core::Graphics& graphics){
-		if (count.explosionDelay()){
-			drawThySelf(graphics);
-			if (count1.explosionDelay()){
-				lExplosion.drawThySelf(graphics);
-				if (count2.explosionDelay()){
-					bExplosion.drawThySelf(graphics);
-				}
-			}
-		}
+		//if (count.explosionDelay()){
+		//	drawThySelf(graphics);
+		//	if (count1.explosionDelay()){
+		//		lExplosion.drawThySelf(graphics);
+		//		if (count2.explosionDelay()){
+		//			bExplosion.drawThySelf(graphics);
+		//		}
+		//	}
+		//}
+		drawThySelf(graphics);
 		
 	}
 

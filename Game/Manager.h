@@ -23,6 +23,9 @@ private:
 	Counter counter;
 	Counter bulletTimer;
 	int padding = 30;
+	int score = 0;
+	int numOfShips = 10;
+
 public:
 
 	vector<SmallShip>& getShips(){
@@ -55,6 +58,30 @@ public:
 		return padding;
 	}
 
+	void addScore(){
+		score++;
+	}
+
+	void minusShips(){
+		numOfShips--;
+	}
+
+	int getNumShips(){
+		return numOfShips;
+	}
+
+	int getScore(){
+		return score;
+	}
+
+	bool gameOver(){
+		return numOfShips <= 0;
+	}
+
+	bool win(){
+		return score >= 100;
+	}
+
 };
 
 
@@ -78,6 +105,7 @@ void isOutOfBounds(Manager& manager,int& width, int& height){
 	for (int x = 0; x < clone.size(); x--){
 		if (isAtEdge(clone[x].getPos(), width, height)){
 			manager.remove(x);
+			manager.minusShips();
 		}
 	}
 }
@@ -126,7 +154,7 @@ void checkPlayerCollision(Ship& ship, vector<SmallShip>& ships){
 }
 
 
-void checkBulletCollision(vector<Bullet>& bullets, vector<SmallShip>& ships){
+void checkBulletCollision(vector<Bullet>& bullets, vector<SmallShip>& ships, Manager& m){
 	vector<SmallShip>& clone = ships;
 	vector<Bullet>& bulletClone = bullets;
 	vector<int> bulletContainer;
@@ -137,6 +165,7 @@ void checkBulletCollision(vector<Bullet>& bullets, vector<SmallShip>& ships){
 				bulletClone[i].destroy();
 				ships.erase(ships.begin() + x);
 				bullets.erase(bullets.begin() + i);
+				m.addScore();
 				break;
 				// DONT EVER DO THIS. Just a fix that I dont like. Not sure how to fix it otherwise.
 			}

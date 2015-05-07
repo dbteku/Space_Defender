@@ -3,6 +3,9 @@
 
 #include "Core.h"
 #include "window.h"
+#include <string>
+
+using std::string;
 
 namespace Core
 {

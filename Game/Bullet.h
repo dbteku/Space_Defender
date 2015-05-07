@@ -1,7 +1,9 @@
-#include "Point.h"
-
 #ifndef BULLET_H
 #define BULLET_H
+#include "Point.h"
+#include "Core.h"
+
+using Core::Graphics;
 class Bullet{
 
 private:
@@ -20,7 +22,7 @@ public:
 		meBase(spawnX, spawnY)
 	{}
 
-	void drawThyself(Core::Graphics& g){
+	void drawThyself(Graphics& g){
 		drawLine(g, meBase + top, meBase + bottom);
 	}
 
@@ -28,7 +30,7 @@ public:
 		velocity.y = -5;
 	}
 
-	void act(Core::Graphics& g){
+	void act(Graphics& g){
 		if (isAlive){
 			move();
 			integrate();

@@ -1,8 +1,10 @@
-#include "Point.h"
-#include "Math.h"
-
 #ifndef SM_SHIP
 #define SM_SHIP
+#include "Point.h"
+#include "Math.h"
+#include "Core.h"
+
+using Core::Graphics;
 class SmallShip{
 
 private:
@@ -28,7 +30,7 @@ public:
 		meBase(random(width, padding), spawnY)
 	{}
 
-	void drawThyself(Core::Graphics& g){
+	void drawThyself(Graphics& g){
 		drawLine(g, meBase + Left, meBase + topPeak);
 		drawLine(g, meBase + topPeak, meBase + Right);
 		drawLine(g, meBase + Left, meBase + Center);
@@ -38,9 +40,10 @@ public:
 	}
 
 	void move(){
+		velocity.y = 3;
 	}
 
-	void act(Core::Graphics& g){
+	void act(Graphics& g){
 		if (!isDead){
 			drawThyself(g);
 			move();

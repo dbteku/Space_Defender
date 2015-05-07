@@ -7,5 +7,8 @@
 #include "Bullet.h"
 #include "Keyboard.h"
 #include "Explosion.h"
+#include "ScoreBoard.h"
+#include "Core.h"
+using Core::Graphics;
 using std::vector;
 #endif DEPEN
