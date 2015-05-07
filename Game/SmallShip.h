@@ -38,7 +38,6 @@ public:
 	}
 
 	void move(){
-		velocity.y = 4;
 	}
 
 	void act(Core::Graphics& g){
